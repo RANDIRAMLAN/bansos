@@ -1,0 +1,21 @@
+Extention for Visual Studio Code
+1. PHP Intelephense (disable fitur PHP Bawaan)
+2. Beautify / Prettier - Code formatter (format on save pada file-preferences)->setting->cari format->format in save di ceklist)
+3. snipet -> buat user snipet seperti berikut :
+{
+  "PHP Tag": {
+    "prefix": "php",
+    "body": "<?php $1 ?>"
+  },
+  "inline Echo": {
+    "prefix": "phpp",
+    "body": "<?= $$1; ?>"
+  }
+}
+4. open in browser
+5. Auto Rename Tag
+6. IntelliSense for CSS class names in HTML
+7. indent-rainbow
+8. One Dark Pro
+
+

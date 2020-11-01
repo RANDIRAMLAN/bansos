@@ -1,0 +1,54 @@
+/* colosel */
+.carousel-item {
+  height: 650px;
+}
+
+.carousel-item img {
+  margin-top: -120px;
+}
+
+/* box inputan */
+.box {
+  width: 450px;
+}
+
+/* tombol*/
+.button {
+  margin-top: 20px;
+  width: 100%;
+  color: #007bff;
+}
+
+.button-sm {
+  color: #007bff;
+}
+
+.button-sm:hover,
+.button:hover {
+  color: orange;
+}
+
+.btn-margin {
+  margin-top: 35px;
+}
+
+.fa-2x:hover {
+  color: orange;
+}
+
+.navbar .navbar-navbar {
+  color: #007bff;
+}
+
+.navbar .navbar-navbar:hover {
+  color: orange;
+}
+
+.card-header a {
+  text-decoration: none;
+}
+
+/* margin */
+.margin-top {
+  margin-top: 75px;
+}
