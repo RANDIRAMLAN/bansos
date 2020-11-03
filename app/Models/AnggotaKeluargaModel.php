@@ -31,4 +31,9 @@ class AnggotaKeluargaModel extends Model
     {
         return $this->where(['noKTP' => $noKTP])->first();
     }
+
+    public function jumlahWarga()
+    {
+        return $this->selectCount('noKTP')->countAll();
+    }
 }

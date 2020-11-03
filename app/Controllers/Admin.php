@@ -53,7 +53,11 @@ class Admin extends BaseController
             'judul' => 'JGK - Dashboard',
             'menu' => $this->MenuModel->getMenu($roleId),
             'submenu' => $this->MenuModel->getSubMenu($roleId),
-            'nama' => $nama
+            'nama' => $nama,
+            'jumlahKeluarga' => $this->KeluargaModel->jumlahKeluarga(),
+            'jumlahWarga' => $this->AnggotaKeluargaModel->jumlahWarga(),
+            'jumlahDataBansos' => $this->DataBansosModel->jumlahDataBansos(),
+            'jumahperimaBansos' => $this->BansosModel->jumahperimaBansos()
         ];
         return view('Admin/dashboard', $data);
     }
@@ -405,7 +409,7 @@ class Admin extends BaseController
         session()->setFlashdata('pesan', '' . $jumlahAktif . ' Data Statusnya Dibuah Menjadi Aktif dan ' . $jumlahTidakAktif . ' Data Statusnya Diubah Menjadi Tidak Aktif');
         return redirect()->to('/Admin/penerima_bansos');
     }
-
+    // tampil data bansos
     public function data_bansos()
     {
         $roleId = session()->get('roleId');

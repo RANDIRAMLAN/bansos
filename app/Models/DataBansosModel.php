@@ -45,4 +45,8 @@ class DataBansosModel extends Model
         return $this->where(['id' => $id])
             ->delete();
     }
+    public function jumlahDataBansos()
+    {
+        return $this->selectCount('idBansos')->countAll();
+    }
 }

@@ -46,4 +46,9 @@ class KeluargaModel extends Model
     {
         return $this->where(['status' => 'Disetujui'])->like('noKK', $auto)->orLike('kepalaKeluarga', $auto)->findAll();
     }
+    // hitung jumah keluarga
+    public function jumlahKeluarga()
+    {
+        return $this->selectCount('noKK')->countAll();
+    }
 }

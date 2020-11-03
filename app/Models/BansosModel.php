@@ -39,4 +39,9 @@ class BansosModel extends Model
     {
         return $this->where(['noKK' => $noKK])->where(['statusAnggota' => 'Aktif'])->orderby('created_at', 'DESC')->findAll();
     }
+
+    public function jumahperimaBansos()
+    {
+        return $this->selectCount('noKK')->countAll();
+    }
 }
