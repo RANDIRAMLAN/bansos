@@ -43,60 +43,44 @@
         <table class="table table-hover table-bordered">
             <thead>
                 <tr>
-                    <th scope="col">No. KK</th>
-                    <th scope="col">No. KTP</th>
-                    <th scope="col">Nama</th>
-                    <th scope="col">Tempat Lahir</th>
-                    <th scope="col">Tanggal Lahir</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Pendidikan</th>
-                    <th scope="col">Pekerjaan</th>
-                    <th scope="col">Catatan</th>
-                    <th scope="col">Foto KTP</th>
+                    <th width="10px" class="text-center" scope="col">Nomor</th>
+                    <th scope="col">Nama Data</th>
+                    <th scope="col">Jumlah Data</th>
+                    <th width="150px" class="text-center" scope="col">Detail Data</th>
+                    <th width="150px" class="text-center" scope="col">Export Data</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>2011-111-111</td>
-                    <td>2011-111-111</td>
-                    <td>Burhan</td>
-                    <td>Taeng</td>
-                    <td>01-10-2020</td>
-                    <td>Kawin</td>
-                    <td>SMA</td>
-                    <td>Buruh</td>
-                    <td>Anak</td>
-                    <td>
-                        <a href="" data-toggle="modal" data-target="#exampleModal" class="btn btn-light btn-sm button-sm"><strong>Foto KTP</strong></a>
-                    </td>
+                    <td class="text-center">1</td>
+                    <td>Data Keluarga Terdaftar</td>
+                    <td><?= $jumlahKeluarga; ?></td>
+                    <td class="text-center"><a href="/Admin/data" class="btn btn-info btn-sm">Detail</a></td>
+                    <td class="text-center"><button class="btn btn-info btn-sm">Export</button></td>
+                </tr>
+                <tr>
+                    <td class="text-center">2</td>
+                    <td>Data Warga</td>
+                    <td><?= $jumlahWarga; ?></td>
+                    <td class="text-center"> - </td>
+                    <td class="text-center"><button class="btn btn-info btn-sm">Export</button></td>
+                </tr>
+                <tr>
+                    <td class="text-center">3</td>
+                    <td>Data Bansos</td>
+                    <td><?= $jumlahDataBansos; ?></td>
+                    <td class="text-center"><a href="/Admin/data_bansos" class="btn btn-info btn-sm">Detail</a></td>
+                    <td class="text-center"><button class="btn btn-info btn-sm">Export</button></td>
+                </tr>
+                <tr>
+                    <td class="text-center">4</td>
+                    <td>Data Penerima Bansos</td>
+                    <td><?= $jumahperimaBansos; ?></td>
+                    <td class="text-center"><a href="/Admin/data_bansos" class="btn btn-info btn-sm">Detail</a></td>
+                    <td class="text-center"><button class="btn btn-info btn-sm">Export</button></td>
                 </tr>
             </tbody>
         </table>
-        <!-- modal foto anggota keluarga -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-md">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title ml-auto mr-auto" id="exampleModalLabel">
-                            Foto Kartu Tanda Penduduk
-                        </h5>
-                    </div>
-                    <div class="modal-body ml-auto mr-auto">
-                        <div class="card">
-                            <img src="img/foto1.jpg" class="card-img-top" alt="Randi Ramlan" />
-                            <div class="card-body">
-                                <p class="card-textn text-center">Nomor KTP</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-light button" data-dismiss="modal">
-                            <strong>Tutup</strong>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 <?= $this->endSection(); ?>
