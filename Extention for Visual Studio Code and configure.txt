@@ -1,4 +1,4 @@
-Extention for Visual Studio Code
+Extention for Visual Studio Code :
 1. PHP Intelephense (disable fitur PHP Bawaan)
 2. Beautify / Prettier - Code formatter (format on save pada file-preferences)->setting->cari format->format in save di ceklist)
 3. snipet -> buat user snipet seperti berikut :
