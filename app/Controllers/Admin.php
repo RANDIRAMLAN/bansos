@@ -140,6 +140,47 @@ class Admin extends BaseController
         ];
         return view('/Admin/data', $data);
     }
+    // export data keluarga
+    public function export_data_keluarga()
+    {
+        $spreadsheet = new Spreadsheet();
+        $currentData = $this->KeluargaModel->findAll();
+        // tulis header/nama kolom 
+        $spreadsheet->setActiveSheetIndex(0)
+            ->setCellValue('A1', 'No. KK')
+            ->setCellValue('B1', 'Kepala Keluarga')
+            ->setCellValue('C1', 'Jumlah Anggota Keluarga')
+            ->setCellValue('D1', 'Alamat')
+            ->setCellValue('E1', 'Kabupaten/Kota')
+            ->setCellValue('F1', 'Kecamatan')
+            ->setCellValue('G1', 'Desa/Kelurahan')
+            ->setCellValue('H1', 'Status');
+
+        $column = 2;
+        // tulis data mobil ke cell
+        foreach ($currentData as $data) {
+            $spreadsheet->setActiveSheetIndex(0)
+                ->setCellValue('A' . $column, $data['noKK'])
+                ->setCellValue('B' . $column, $data['kepalaKeluarga'])
+                ->setCellValue('C' . $column, $data['jumlahAnggotaKeluarga'])
+                ->setCellValue('D' . $column, $data['alamat'])
+                ->setCellValue('E' . $column, $data['kabKota'])
+                ->setCellValue('F' . $column, $data['kecamatan'])
+                ->setCellValue('G' . $column, $data['desaKelurahan'])
+                ->setCellValue('H' . $column, $data['status']);
+            $column++;
+        }
+        // tulis dalam format .xlsx
+        $writer = new Xlsx($spreadsheet);
+        $fileName = 'Data Keluarga';
+
+        // Redirect hasil generate xlsx ke web client
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename=' . $fileName . '.xlsx');
+        header('Cache-Control: max-age=0');
+
+        $writer->save('php://output');
+    }
     // data anggota keluarga
     public function anggota_keluarga($noKK)
     {

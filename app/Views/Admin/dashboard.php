@@ -56,7 +56,9 @@
                     <td>Data Keluarga Terdaftar</td>
                     <td><?= $jumlahKeluarga; ?></td>
                     <td class="text-center"><a href="/Admin/data" class="btn btn-info btn-sm">Detail</a></td>
-                    <td class="text-center"><button class="btn btn-info btn-sm">Export</button></td>
+                    <form action="/admin/export_data_keluarga" method="post">
+                        <td class="text-center"><button class="btn btn-info btn-sm">Export</button></td>
+                    </form>
                 </tr>
                 <tr>
                     <td class="text-center">2</td>
