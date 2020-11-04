@@ -211,6 +211,51 @@ class Admin extends BaseController
         ];
         return view('/Admin/anggota_keluarga', $data);
     }
+    // export data anggota Keluarga
+    public function export_data_anggota_keluarga()
+    {
+        $spreadsheet = new Spreadsheet();
+        $currentData = $this->AnggotaKeluargaModel->findAll();
+        // tulis header/nama kolom 
+        $spreadsheet->setActiveSheetIndex(0)
+            ->setCellValue('A1', 'No. KK')
+            ->setCellValue('B1', 'No. KTP')
+            ->setCellValue('C1', 'Nama')
+            ->setCellValue('D1', 'Tempat Lahir')
+            ->setCellValue('E1', 'Tanggal Lahir')
+            ->setCellValue('F1', 'Jenis Kelamin')
+            ->setCellValue('G1', 'Status Perkawinan')
+            ->setCellValue('H1', 'Pendidikan')
+            ->setCellValue('I1', 'Pekerjaan')
+            ->setCellValue('J1', 'Catatan');
+
+        $column = 2;
+        // tulis data mobil ke cell
+        foreach ($currentData as $data) {
+            $spreadsheet->setActiveSheetIndex(0)
+                ->setCellValue('A' . $column, $data['noKK'])
+                ->setCellValue('B' . $column, $data['noKTP'])
+                ->setCellValue('C' . $column, $data['nama'])
+                ->setCellValue('D' . $column, $data['tempatLahir'])
+                ->setCellValue('E' . $column, $data['tanggalLahir'])
+                ->setCellValue('F' . $column, $data['jenisKelamin'])
+                ->setCellValue('G' . $column, $data['statusPerkawinan'])
+                ->setCellValue('H' . $column, $data['pendidikan'])
+                ->setCellValue('I' . $column, $data['pekerjaan'])
+                ->setCellValue('J' . $column, $data['catatan']);
+            $column++;
+        }
+        // tulis dalam format .xlsx
+        $writer = new Xlsx($spreadsheet);
+        $fileName = 'Data Anggota Keluarga';
+
+        // Redirect hasil generate xlsx ke web client
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename=' . $fileName . '.xlsx');
+        header('Cache-Control: max-age=0');
+
+        $writer->save('php://output');
+    }
     // bansos
     public function bansos()
     {

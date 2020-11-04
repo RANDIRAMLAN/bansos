@@ -14,7 +14,7 @@
         <div class="card text-white bg-success mb-3">
             <div class="card-header"><i class="fas fa-male"></i> Data Warga</div>
             <div class="card-body">
-                <h5 class="card-title">Total Data Warga</h5>
+                <h5 class="card-title">Total Data Anggota Keluarga</h5>
                 <h1><strong><?= $jumlahWarga; ?></strong></h1>
             </div>
         </div>
@@ -62,10 +62,12 @@
                 </tr>
                 <tr>
                     <td class="text-center">2</td>
-                    <td>Data Warga</td>
+                    <td>Data Anggota Keluarga</td>
                     <td><?= $jumlahWarga; ?></td>
                     <td class="text-center"> - </td>
-                    <td class="text-center"><button class="btn btn-info btn-sm">Export</button></td>
+                    <form action="/admin/export_data_anggota_keluarga" method="post">
+                        <td class="text-center"><button class="btn btn-info btn-sm">Export</button></td>
+                    </form>
                 </tr>
                 <tr>
                     <td class="text-center">3</td>
