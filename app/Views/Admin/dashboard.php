@@ -74,7 +74,9 @@
                     <td>Data Bansos</td>
                     <td><?= $jumlahDataBansos; ?></td>
                     <td class="text-center"><a href="/Admin/data_bansos" class="btn btn-info btn-sm">Detail</a></td>
-                    <td class="text-center"><button class="btn btn-info btn-sm">Export</button></td>
+                    <form action="/admin/export_data_bansos" method="post">
+                        <td class="text-center"><button class="btn btn-info btn-sm">Export</button></td>
+                    </form>
                 </tr>
                 <tr>
                     <td class="text-center">4</td>

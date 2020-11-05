@@ -285,6 +285,43 @@ class Admin extends BaseController
         ];
         return view('/Admin/bansos', $data);
     }
+    // export data bansos
+    public function export_data_bansos()
+    {
+        $spreadsheet = new Spreadsheet();
+        $currentData = $this->DataBansosModel->findAll();
+        // tulis header/nama kolom 
+        $spreadsheet->setActiveSheetIndex(0)
+            ->setCellValue('A1', 'ID Bansos')
+            ->setCellValue('B1', 'Nama Bansos')
+            ->setCellValue('C1', 'Kategori')
+            ->setCellValue('D1', 'Pendamping')
+            ->setCellValue('E1', 'Nominal')
+            ->setCellValue('F1', 'Tipe Bansos');
+
+        $column = 2;
+        // tulis data mobil ke cell
+        foreach ($currentData as $data) {
+            $spreadsheet->setActiveSheetIndex(0)
+                ->setCellValue('A' . $column, $data['idBansos'])
+                ->setCellValue('B' . $column, $data['namaBansos'])
+                ->setCellValue('C' . $column, $data['kategori'])
+                ->setCellValue('D' . $column, $data['pendamping'])
+                ->setCellValue('E' . $column, $data['nominal'])
+                ->setCellValue('F' . $column, $data['tipeBansos']);
+            $column++;
+        }
+        // tulis dalam format .xlsx
+        $writer = new Xlsx($spreadsheet);
+        $fileName = 'Data Bansos';
+
+        // Redirect hasil generate xlsx ke web client
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename=' . $fileName . '.xlsx');
+        header('Cache-Control: max-age=0');
+
+        $writer->save('php://output');
+    }
     // cari data keluarga(autocomplete)
     function keluarga_autocomplete()
     {
